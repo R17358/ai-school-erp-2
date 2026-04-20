@@ -1,0 +1,16 @@
+cd backend
+npm install
+npx prisma migrate dev --name init
+npx prisma generate
+node src/prisma/seed.js
+npm run dev
+
+cd ai-service
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+
+cd frontend
+npm i
+npm run dev
